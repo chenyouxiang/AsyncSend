@@ -1,6 +1,6 @@
-###get data from php with msg queue and send to httpserver with epoll
+### get data from php with msg queue and send to httpserver with epoll
 
-###need: 
+### need: 
 
 * gcc 4.8.5
 
@@ -8,7 +8,7 @@
 
 * boost
 
-###compile step:
+### compile step:
 
 * cd to the project path
 
@@ -18,13 +18,13 @@
 
 * complie success 
 
-####start the app
+#### start the app
 
 >./async-send --msg-key=1000  --msg-size=10240
 
-####msg-key and msg-size decide by you self
+#### msg-key and msg-size decide by you self
 
-###the php code a.php:
+### the php code a.php:
 
 >$msg_id = msg_get_queue(1000);
  
@@ -32,8 +32,8 @@
 
 
 
-###when execute: 
+### when execute: 
 
 >php a.php  
 
-####then the c++ app will get the json and send to http://localhost/index.php with content "testasdfasdg"
+#### then the c++ app will get the json and send to http://localhost/index.php with content "testasdfasdg"
