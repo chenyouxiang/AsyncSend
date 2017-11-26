@@ -116,7 +116,8 @@ void Poller::loop(int timeout){
 
     //删除连接
     for(auto iter = delete_list_.begin(); iter!=delete_list_.end(); iter++){
-        std::cout<<"delete connection:"<<static_cast<const void*>(*iter)<<"\r\n";
+        auto fd = (*iter)->get_fd();
+        std::cout<<"delete connection:"<<static_cast<const void*>(*iter)<<",fd:"<<fd<<"\r\n";
         delete *iter;
     }
     delete_list_.clear();
