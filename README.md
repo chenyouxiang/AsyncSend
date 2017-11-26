@@ -36,4 +36,4 @@ when execute:
 
 php a.php  
 
-then the c++ app will get the json and send to http://localhost/index.php with content "testasdfasdg11"
+then the c++ app will get the json and send to http://localhost/index.php with content "testasdfasdg"
