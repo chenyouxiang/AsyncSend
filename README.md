@@ -19,9 +19,9 @@
 * complie success 
 
 ### start the app:
-'''javascript
+```javascript
 ./async-send --msg-key=1000  --msg-size=10240
-'''
+```
 
 #### msg-key and msg-size decide by you self
 
