@@ -19,7 +19,7 @@
 * complie success 
 
 ### start the app:
-```javascript
+```shell
 ./async-send --msg-key=1000  --msg-size=10240
 ```
 
