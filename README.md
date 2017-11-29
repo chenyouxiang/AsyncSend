@@ -26,15 +26,15 @@
 #### msg-key and msg-size decide by you self
 
 #### the php code a.php:
+```php
+$msg_id = msg_get_queue(1000); 
 
-	$msg_id = msg_get_queue(1000);
- 
-	msg_send($msg_id,1,'{"host":"localhost:80", "url":"/index.php","body":"testasdfasdg"}',false);
-
+msg_send($msg_id,1,'{"host":"localhost:80", "url":"/index.php","body":"testasdfasdg"}',false);
+```
 
 
 #### when execute: 
-
-	php a.php  
-
+```shell
+php a.php  
+```
 #### then the c++ app will get the json and send to http://localhost/index.php with content "testasdfasdg"
