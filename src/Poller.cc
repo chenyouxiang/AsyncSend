@@ -106,12 +106,12 @@ void Poller::loop(int timeout){
         }
         auto found = active_list_.find((*iter).second);
         if(found == active_list_.end()){
-            iter = timer_list_.erase(iter);
+            timer_list_.erase(iter++);
             continue;
         }
         std::cout<<"connection timeout:"<<static_cast<const void*>((*iter).second)<<"\r\n";
-        (*iter).second->close_connection();
-        iter = timer_list_.erase(iter);
+        iter->second->close_connection();
+        timer_list_.erase(iter++);
     }
 
     //删除连接
