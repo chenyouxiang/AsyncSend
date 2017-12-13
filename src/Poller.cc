@@ -55,7 +55,7 @@ void Poller::remove_all_event(int fd){
 }
 
 void Poller::append_active_list(ConnectionBase* c){
-    std::cout<<"append connection to active list:"<<static_cast<const void*>(c)<<"\r\n";
+    std::cout<<"append connection to active list:"<<c->get_fd()<<"\r\n";
     active_list_.insert(c);
     auto now=get_ticks();
     //插入超时队列，超时时间360s
@@ -65,11 +65,11 @@ void Poller::append_delete_list(ConnectionBase* c){
     auto iter = active_list_.find(c);
     if(iter != active_list_.end()){
         active_list_.erase(iter);
-        std::cout<<"remove connection from active list:"<<static_cast<const void*>(*iter)<<"\r\n";
+        std::cout<<"remove connection from active list:"<<c->get_fd()<<"\r\n";
     }else{
         return;
     }
-    std::cout<<"append connection to delete list:"<<static_cast<const void*>(c)<<"\r\n";
+    std::cout<<"append connection to delete list:"<<c->get_fd()<<"\r\n";
     delete_list_.insert(c);
 }
 
@@ -109,7 +109,7 @@ void Poller::loop(int timeout){
             timer_list_.erase(iter++);
             continue;
         }
-        std::cout<<"connection timeout:"<<static_cast<const void*>((*iter).second)<<"\r\n";
+        std::cout<<"connection timeout:"<<iter->sendcond->get_fd()<<"\r\n";
         iter->second->close_connection();
         timer_list_.erase(iter++);
     }
@@ -117,7 +117,7 @@ void Poller::loop(int timeout){
     //删除连接
     for(auto iter = delete_list_.begin(); iter!=delete_list_.end(); iter++){
         auto fd = (*iter)->get_fd();
-        std::cout<<"delete connection:"<<static_cast<const void*>(*iter)<<",fd:"<<fd<<"\r\n";
+        std::cout<<"delete connection:"<<fd<<"\r\n";
         delete *iter;
     }
     delete_list_.clear();
