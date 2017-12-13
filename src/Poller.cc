@@ -104,7 +104,7 @@ void Poller::loop(int timeout){
         if(iter == timeout_iter){
             break;
         }
-        auto found = active_list_.find((*iter).second);
+        auto found = active_list_.find(iter->second);
         if(found == active_list_.end()){
             timer_list_.erase(iter++);
             continue;
