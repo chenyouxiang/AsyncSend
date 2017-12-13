@@ -109,7 +109,7 @@ void Poller::loop(int timeout){
             timer_list_.erase(iter++);
             continue;
         }
-        std::cout<<"connection timeout:"<<iter->sendcond->get_fd()<<"\r\n";
+        std::cout<<"connection timeout:"<<iter->second->get_fd()<<"\r\n";
         iter->second->close_connection();
         timer_list_.erase(iter++);
     }
