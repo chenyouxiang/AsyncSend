@@ -23,7 +23,7 @@ Connection::Connection(Poller* poller):is_close_(true),poller_(poller),parser_(n
 }
 
 Connection::~Connection(){
-    std::cout<<"connection end:"<<static_cast<const void*>(this)<<"\r\n";
+    std::cout<<"connection end:"<<fd_<<"\r\n";
     close_connection();
 }
 
